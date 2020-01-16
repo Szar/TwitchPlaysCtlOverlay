@@ -13,8 +13,9 @@ class App extends React.Component {
 		this.get = this.get.bind(this);
 
 		this.state = {
-			current_text: this.default_prompt.text,
-			current_prompt: this.default_prompt.prompt,
+			text: this.default_prompt.text,
+			prompt: this.default_prompt.prompt,
+			guesses: this.renderGuesses()
 		}
 		
 	}
@@ -40,8 +41,11 @@ class App extends React.Component {
 				self.setState({
 					text: data.text,
 					prompt: data.prompt,
+					word: data.word,
+					guesses: self.renderGuesses(JSON.parse(data.guess)),
 					scores: self.renderScores(scores)
 				});
+				console.log(self.state)
 					
 			}).catch(function (error) {
 				console.log(error);
@@ -60,6 +64,32 @@ class App extends React.Component {
 		return html;
 
 	}
+	renderGuesses(guesses) {
+		if(!guesses || guesses=="") {
+			guesses = {}
+		}
+		
+		var html = []
+		if(Object.keys(guesses).length>0) {
+			for(var username in guesses) {
+				html.push(<div key={username} className="guess--item">
+						<div>{username}</div>
+						<div>{guesses[username]}</div>
+					</div>
+				);
+			}
+		}
+		else {
+			html.push(<div key="none" id="none">No Guesses Yet</div>)
+		}
+		
+		/*
+		for(var i =0; i<guesses.length; i++) {
+			
+		}
+		*/
+		return html;
+	}
 	render() {
 		return (
 			<div className="App">
@@ -75,7 +105,7 @@ class App extends React.Component {
 								<div className="section--title">
 									<h2>Instructions</h2>
 								</div>
-								<div class="misc--content">
+								<div className="misc--content">
 									<p>Guess the next word using <span>!guess (someword)</span> or start a new prompt with
 									 <span>!prompt (whatever text you want)</span>.</p>
 
@@ -104,43 +134,29 @@ class App extends React.Component {
 						<div className="col" id="content">
 							<div id="console-container">
 								<div id="console">
-									<h1 id="prompt">“{ this.state.prompt }”</h1>
-									<div id="text">{ this.state.text }</div>
+									
+									<div id="text"><span className="text-prompt">{ this.state.prompt }</span> { this.state.text.substring(this.state.prompt.length+1) }</div>
 								</div>
 
 							</div>
 							<div id="info">
+							<h1 id="prompt">“{ this.state.prompt }”</h1>
 								<div className="row">
-									<div>
+									<div id="guesses">
 										<div className="section--title">
-											<h2>Current Guesses</h2>
+											<h2>Guesses</h2>
 										</div>
-										<table className="table" border={0} cellSpacing="0" cellPadding="0">
-											<thead>
-												<tr>
-													<th>Word</th>
-													<th>User</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td><div>Word</div></td>
-													<td><div>User</div></td>
-												</tr>
-												<tr>
-													<td><div>Word</div></td>
-													<td><div>User</div></td>
-												</tr>
-												
-											</tbody>
-										</table>
+										<div className="guess--container">
+											{this.state.guesses}
+											
+										</div>
 									</div>
 									<div>
 										<div className="section--title">
 											<h2>Correct Word</h2>
 										</div>
 										<div id="correct_word">
-											"Pintobean"
+											{typeof this.state.word!="undefined"&&this.state.word!=""?"“"+this.state.word+"”":""}
 										</div>
 									</div>
 									
