@@ -3,7 +3,7 @@ import axios from 'axios';
 import logo from './images/soflne-text.png';
 import './App.scss';
 
-const config = require('../../config');
+const config = require('./config');
 
 class App extends React.Component {
 	constructor(props, context) {
