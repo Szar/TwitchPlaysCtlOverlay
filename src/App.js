@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import logo from './images/soflne-text.png';
+import logo from './images/logo-with-skull.png';
 import './App.scss';
 
 const config = require('./config');
@@ -51,10 +51,10 @@ class App extends React.Component {
 	renderScores(scores) {
 		var html = []
 		for(var i =0; i<scores.length; i++) {
-			html.push(<tr>
+			html.push(<tr key={i}>
 				<td><div>#{i+1}</div></td>
-				<td><div>{scores[i].username}</div></td>
 				<td><div>{scores[i].score}</div></td>
+				<td><div>{scores[i].username}</div></td>
 			</tr>);
 		}
 		return html;
@@ -69,16 +69,28 @@ class App extends React.Component {
 							<div className="title">
 								<img src={logo} alt="Soflne" />
 							</div>
+							
 							<div id="chat"></div>
-							<div id="misc"></div>
+							<div id="misc">
+								<div className="section--title">
+									<h2>Instructions</h2>
+								</div>
+								<div class="misc--content">
+									<p>Guess the next word using <span>!guess (someword)</span> or start a new prompt with
+									 <span>!prompt (whatever text you want)</span>.</p>
+
+								</div>
+							</div>
 							<div id="scores">
-								<h2>Scoreboard</h2>
+								<div className="section--title">
+									<h2>Scoreboard</h2>
+								</div>
 								<table className="table" border={0} cellSpacing="0" cellPadding="0">
 									<thead>
 										<tr>
 											<th>Rank</th>
-											<th>User</th>
 											<th>Score</th>
+											<th>User</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -98,7 +110,44 @@ class App extends React.Component {
 
 							</div>
 							<div id="info">
-								Guess the next word using "<span>!guess (someword)</span>". Start a new prompt with "<soan>!prompt (whatever text you want)</soan>". https://github.com/salesforce/ctrl
+								<div className="row">
+									<div>
+										<div className="section--title">
+											<h2>Current Guesses</h2>
+										</div>
+										<table className="table" border={0} cellSpacing="0" cellPadding="0">
+											<thead>
+												<tr>
+													<th>Word</th>
+													<th>User</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><div>Word</div></td>
+													<td><div>User</div></td>
+												</tr>
+												<tr>
+													<td><div>Word</div></td>
+													<td><div>User</div></td>
+												</tr>
+												
+											</tbody>
+										</table>
+									</div>
+									<div>
+										<div className="section--title">
+											<h2>Correct Word</h2>
+										</div>
+										<div id="correct_word">
+											"Pintobean"
+										</div>
+									</div>
+									
+								</div>
+								
+								
+								
 							</div>
 						</div>
 					</div>
