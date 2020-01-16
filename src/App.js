@@ -9,7 +9,7 @@ class App extends React.Component {
 	constructor(props, context) {
 		super(props);
 		this.default_prompt = {"id":0,"channel":"#soflne","username":"","prompt":"Waiting for prompt...","command":"","text":"","created_at":"","active":1}
-		this.delay = 3000;
+		this.delay = config.refresh_delay;
 		this.get = this.get.bind(this);
 
 		this.state = {
