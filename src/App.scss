@@ -1,0 +1,301 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+
+ $color-pink: #ff1651;
+ $color-orange: #fdb10b;
+ $color-green: #89cc41;
+ $color-yellow: #fde458;
+ $color-purple:#7200f8;
+ $padding: 30px;
+ @import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700|Public+Sans:100,200,300,300i,400,400i,500,500i,600,600i,700,700i,800,900|Source+Code+Pro:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,900,900i&display=swap');
+ html,
+ body {
+	 height: 100%;
+ }
+
+ html,
+body {
+	height: 100%;
+}
+
+
+body {
+	font-family: 'Public Sans', sans-serif;
+	 font-size: 32px;
+	 font-weight: 500;
+	 position: relative;
+	 color: white;
+	 height: 100vh;
+	 margin: 0;
+	 background: #fbb301 url(./images/background-pink.png) center center repeat;
+	 overflow-y: hidden;
+ 
+	 -ms-overflow-style: none;
+	 -moz-osx-font-smoothing: grayscale;
+	 -webkit-font-smoothing: antialiased;
+	 -webkit-text-size-adjust: none;
+	 font-smooth: antialiased;
+	 text-rendering: optimizeLegibility;
+
+}
+
+ul,
+li {
+	width: auto;
+}
+
+ul {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+li {
+	text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Public Sans', sans-serif;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+h1 {
+	margin-top: 0px;
+	
+	font-weight: 900;
+	font-size: 42px;
+	line-height: 1.1;
+}
+h2 {
+	text-align: center;;
+	font-weight: 900;
+	line-height: 1.1;
+	font-size: 24px;
+	margin-bottom: $padding/2;
+	margin-top: 0px;
+	color: #fff;
+}
+#chat {
+	background: rgba(0,0,0,0.95);
+	//border: 2px solid blue;
+	position: relative;
+	flex-grow: 1;
+
+	&::before {
+		content: "";
+		display: block;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		position: absolute;
+		//background-image: linear-gradient(45deg,	rgba(54, 131, 153, 0.8) 0%,rgba(#e61257, 0.05));
+		background-image: radial-gradient( circle 1697px at 5.8% 11.8%,  rgba(0,201,235,1) 0%, rgba(145,0,228,1) 100% );
+		//background-image: linear-gradient( 103deg,  rgba(137,247,234,1) 7.3%, rgba(102,117,241,1) 100.2% );
+		//background-image: linear-gradient( 179.5deg,  rgba(255,230,69,1) 3.3%, rgba(255,157,73,1) 96% );
+		/*background-image: linear-gradient(45deg,
+			rgba(0, 216, 255, 0.2) 10%,
+			rgba(0, 1, 127, 0));*/
+			opacity: 0.2;
+	 }
+	margin-top: $padding;
+
+}
+#misc {
+	flex-grow: 0;
+}
+.container {
+	position: relative;
+	display: block;
+	margin: auto;
+	width: 100%;
+	max-width: 100%;
+	padding: $padding;
+	height: 100vh;
+	box-sizing: border-box;
+	> .row {
+		height: 100%;
+	}
+}
+
+ #root, .App {
+	 position: relative;
+	 display: block;
+	 height: 100vh;
+ }
+ .row {
+	 display: flex;
+	 width: 100%;
+	 height: 100vh;
+	 .col {
+		 //display: table-cell;
+		 //flex-basis: 25%;
+    	flex: 0 0;
+	 }
+ }
+
+ #sidebar {
+	flex-basis: 20%;
+	padding-right: $padding;
+	display: flex;
+	flex-direction: column;
+	//align-items: flex-end;
+	.chat {
+		flex-grow: 1;
+	}
+	 .title {
+		 flex-grow: 0;
+		text-align: center;
+		img {
+			width: 230px;
+			max-width: 100%;
+		}
+	}
+	
+ }
+ $table-padding: 13px;
+ #scores {
+	flex-grow: 0;
+	 margin-top: $padding;
+	 text-align: left;
+	 font-size: 17px;
+	.table {
+		line-height: 1.25;
+		width: 100%;
+		//border-spacing: unset;
+		border-collapse: collapse;
+		//border-collapse: collapse;
+
+		thead {
+			background: $color-purple;
+			border:none;
+			text-align: center;
+			th {
+				//border: 1px solid $color-pink;
+				padding: $table-padding*0.8 $table-padding;
+				font-weight: 900;
+				
+			}
+		}
+		tbody {
+			color: #000;
+			tr {
+				position: relative;
+				
+				
+				td {
+					//border: 2px solid #fff;;
+					position: relative;
+					&::before {
+						position: absolute;
+						content: "";
+						background: #fff;
+						//bottom: 2px;
+						//top: 2px;
+						top: 0;
+						bottom: 2px;
+						left: 0;
+						right: 0;
+					}
+					> div {
+						position: relative;
+						//border: 2px solid #fff;
+						//background: #fff;
+						padding: $padding/2;
+						padding: $table-padding*0.8 $table-padding;
+						//border-bottom: 2px solid transparent
+						//margin: 2px 0px;
+					}
+					border-bottom: 2px solid transparent;
+					//border-bottom: 
+					&:first-child {
+						font-weight: bold;
+					}
+					&:first-child, &:last-child {
+						text-align: center;
+					}
+				}
+				&:first-child {
+					td {
+						border-top: 2px solid transparent;
+						&::before {
+
+							top: 2px;
+
+						}
+					}
+				}
+			}
+		}
+	}
+}
+ #content {
+	flex-basis: 80%;
+	 position: relative;
+	 display: flex;
+	 flex-direction: column;
+	 max-height: 100%;
+ }
+ #console-container {
+	 flex-grow: 1;
+	font-family: 'Inconsolata', monospace;
+	 position: relative;
+	 background: rgba(0,0,0,0.95);
+	// height: 100%;
+	 display: flex;
+	 flex-direction: column;
+	 &::before {
+		content: "";
+		display: block;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		position: absolute;
+		//background-image: linear-gradient(45deg,	rgba(54, 131, 153, 0.8) 0%,rgba(#e61257, 0.05));
+		background-image: radial-gradient( circle 1697px at 5.8% 11.8%,  rgba(0,201,235,1) 0%, rgba(145,0,228,1) 100% );
+		//background-image: linear-gradient( 103deg,  rgba(137,247,234,1) 7.3%, rgba(102,117,241,1) 100.2% );
+		//background-image: linear-gradient( 179.5deg,  rgba(255,230,69,1) 3.3%, rgba(255,157,73,1) 96% );
+		/*background-image: linear-gradient(45deg,
+			rgba(0, 216, 255, 0.2) 10%,
+			rgba(0, 1, 127, 0));*/
+			opacity: 0.2;
+	 }
+	// /	align-items: flex-end; 
+	 #console {
+		 line-height: 1.2;
+		 position: relative;
+		margin-top: auto;
+		align-self: flex-end;
+		position: relative;
+		width: 100%;
+		padding: $padding;
+		
+		//height: 100%;
+		
+		
+	 }
+ }
+
+#info {
+	margin-top: $padding/1.25;
+	background: transparent;
+	font-size: 22px;
+	line-height: 1.3;
+	font-weight: 500;
+	span {
+		font-family: 'Inconsolata', monospace;
+		font-weight: 900;
+	}
+}
