@@ -33,7 +33,7 @@ body {
 	color: white;
 	//height: 100vh;
 	margin: 0;
-	background: #fbb301 url(./images/background.png) center center repeat;
+	background: #000 url(./images/background.png) center center repeat;
 	overflow-y: hidden;
 	//min-width: 1920px;
 	-ms-overflow-style: none;
@@ -98,7 +98,8 @@ h2 {
 	background: rgba(0, 0, 0, 0.95);
 	//border: 2px solid blue;
 	position: relative;
-	flex-grow: 1;
+	flex-grow: 0;
+	height: 344px;
 	//height: 30%;
 
 	&::before {

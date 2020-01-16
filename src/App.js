@@ -45,7 +45,7 @@ class App extends React.Component {
 					guesses: self.renderGuesses(JSON.parse(data.guess)),
 					scores: self.renderScores(scores)
 				});
-				console.log(self.state)
+				//console.log(self.state)
 					
 			}).catch(function (error) {
 				console.log(error);
