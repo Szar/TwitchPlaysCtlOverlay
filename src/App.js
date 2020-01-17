@@ -15,7 +15,7 @@ class App extends React.Component {
 		this.state = {
 			text: this.default_prompt.text,
 			prompt: this.default_prompt.prompt,
-			guesses: this.renderGuesses()
+			guesses: this.renderGuesses({})
 		}
 		
 	}
@@ -32,9 +32,10 @@ class App extends React.Component {
 					'Content-Type': 'application/json',
 				}
 			}).then((resp)=>{
-				var data = resp.data.data.length>0?resp.data.data[0]:this.default_prompt
-				var score_users = Object.keys(resp.data.scores).sort(function(a,b){return resp.data.scores[b]-resp.data.scores[a]})
-				var scores = [];
+				var data = resp.data.data.length>0?resp.data.data[0]:this.default_prompt,
+					guess = resp.data.data.length>0?resp.data.data[0].guess:"{}",
+					score_users = Object.keys(resp.data.scores).sort(function(a,b){return resp.data.scores[b]-resp.data.scores[a]}),
+					scores = [];
 				for(var i=0; i<5; i++) {
 					scores.push({ "username":score_users[i], "score": resp.data.scores[score_users[i]]});
 				}
@@ -42,7 +43,7 @@ class App extends React.Component {
 					text: data.text,
 					prompt: data.prompt,
 					word: data.word,
-					guesses: self.renderGuesses(JSON.parse(data.guess)),
+					guesses: self.renderGuesses(JSON.parse(guess)),
 					scores: self.renderScores(scores)
 				});
 				//console.log(self.state)
